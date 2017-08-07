@@ -72,10 +72,75 @@ Banner5 = """
 #(Font: 'Flower Power' - http://patorjk.com/software/taag/#p=display&f=Flower%20Power&t=B612)
 
 
+Banner6 = r"""
+                           '||'''|,   ,,,,   ||   ''|,
+                            ||   ||  ||   ' '||  '  ||
+                            ||;;;;   ||''|,  ||    .|'
+                            ||   ||  ||  ||  ||   //  
+                           .||...|'  `|..|' .||. ((...
+"""
+#(Font: 'fender')
+
+
+Banner7 = """
+                                    #                  
+                                   ##                  
+                                  ###                  
+                        ######    ###    ####  ####### 
+                              ##  ###      ##       ## 
+                              ##  ###      ##       ## 
+                         ######   #######  ##  ####### 
+                         ###  ##  ###  ##  ##  ###     
+                         ###  ##  ###  ##  ##  ###     
+                         ######   ####### #### ########
+"""
+#(Font: 'npn_____' + Alargada)
+
+
+Banner8 = r"""
+                              (   (        )     )  
+                            ( )\  )\ )  ( /(  ( /(  
+                            )((_)(()/(  )\()) )(_)) 
+                           ((_)_  /(_))((_)\ ((_)   
+                            | _ )(_) /  / (_)|_  )  
+                            | _ \ / _ \ | |   / /   
+                            |___/ \___/ |_|  /___|  
+"""
+#(Font: 'fire_font-k')
+
+
+Banner9 = r"""
+                          ,-----.    ,--. ,--. ,---. 
+                          |  |) /_  /  .'/   |'.-.  \
+                          |  .-.  \|  .-.`|  | .-' .'
+                          |  '--' /\   o ||  |/   '-.
+                          `------'  `---' `--''-----'
+"""
+#(Font: 'soft')
+
+
+Banner10 = r"""
+                                 ___   __ _ ___ 
+                                | _ ) / // |_  )
+                                | _ \/ _ \ |/ / 
+                                |___/\___/_/___|
+"""
+#(Font: 'small')
+
+
+Banner11 = r"""
+                                _ )   /  _ | _  ) 
+                                _ \   _ \  |   /  
+                               ___/ \___/ _| ___| 
+"""
+#(Font: 'smshadow')
+
 
 def Banner():
 	
-    Banners = [ Banner1, Banner2, Banner3, Banner4, Banner5 ]
-    
+    Banners = [ Banner1, Banner2, Banner3, Banner4, Banner5,\
+		Banner6, Banner7, Banner8, Banner9, Banner10,\
+		Banner11 ]
+		
     return random.choice(Banners)
 
