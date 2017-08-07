@@ -2,7 +2,7 @@
 # Python 3
 # By: LawlietJH
 # B612
-# v.1.0.2
+# v.1.0.3
 
 import time
 import os
@@ -98,6 +98,11 @@ def B612(Cadena, Cifrar=True):
 		Bool = True
 		
 		for x in Cadena:
+			
+			if x.startswith("VirusZióN"):
+				
+				String = String[:-2]
+				continue
 						
 			Dec = Asc_Dec(x)
 			Dec = Dec.split(" ")
@@ -141,6 +146,11 @@ def B612(Cadena, Cifrar=True):
 		Cont = 0
 		
 		for x in Cadena:
+			
+			if x.startswith(r"]|k\r(t8rp`pk\ÎX0"):
+				
+				String = String[:-2]
+				continue
 			
 			Dec = Asc_Dec(x)
 			Dec = Dec.split(" ")
@@ -204,11 +214,11 @@ def LeerArchivo():
 	
 	Cadena = Eny.read()
 	
-	print("\n\n\t [+] En Archivo:\n\n", Cadena)
+	print("\n\n\t [+] En Archivo:\n\n" + Cadena)
 	
 	Cadena = Cadena.split("\n")
 	
-	if Cadena[-1] == "`pk\ÎX0": B612(Cadena, False)
+	if Cadena[-1] == r"]|k\r(t8rp`pk\ÎX0": B612(Cadena, False)
 	else: B612(Cadena, True)
 	
 	Eny.close()
@@ -227,7 +237,7 @@ def GuardarArchivo():
 	
 	open("Eny.zion", "a")
 	Eny = open("Eny.zion", "w")
-	if Bool: Eny.write(String + "\n`pk\ÎX0")
+	if Bool: Eny.write(String + "\n" + r"]|k\r(t8rp`pk\ÎX0")
 	else: Eny.write(String)
 	Eny.close()
 
