@@ -7,14 +7,14 @@
 #                       ██████╔╝╚██████╔╝██║███████╗
 #                       ╚═════╝  ╚═════╝ ╚═╝╚══════╝
 #                                                         By: LawlietJH
-#                                                              v.1.0.4
-from BannerEMCrk import Banner
+#                                                              v.1.0.5
+from BannerB612 import Banner
 import time
 import os
 
 #=======================================================================
 
-Version = "v1.0.4"
+Version = "v1.0.5"
 
 BannerB612 = Banner()
 
@@ -229,9 +229,9 @@ def B612(Cadena, Cifrar=True):
 
 
 
-def LeerArchivo():
+def LeerArchivo(Nombre):
 	
-	Nombre = input("\n\n\t [+] Nombre de Archivo: ")
+	global String
 	
 	try: Eny = open(Nombre,"r")
 	except FileNotFoundError:
@@ -277,8 +277,32 @@ def GuardarArchivo():
 
 def Main():
 	
+	global String
+	
 	Dat()
-	LeerArchivo()
+	
+	Cadena = input("\n\n [+] Escribe un Nombre de Archivo o Una Cadena Para Cifrar o Decifrar.\n\n\n >>> ")
+	
+	if "." in Cadena:
+		
+		if Cadena.endswith((".txt", ".zion")):
+
+			print(True)
+			LeerArchivo(Cadena)
+	
+	else:
+		
+		#~ print("\n\n\t [+] En Archivo:\n\n" + Cadena)
+	
+		#~ Cadena = Cadena.split("\n")
+		
+		if Cadena.endswith("0x"): B612(Cadena, False)
+		else: B612(Cadena, True)
+		
+		print("\n\n [+] Cadena\n  |\n   ---------> " + String.replace("\n", "" ))
+		
+		Pause()
+		
 	GuardarArchivo()
 
 
