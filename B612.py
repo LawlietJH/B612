@@ -1,11 +1,39 @@
 # -*- Coding: UTF-8 -*-
 # Python 3
-# By: LawlietJH
-# B612
-# v.1.0.3
-
+#                       ██████╗  ██████╗ ██╗██████╗ 
+#                       ██╔══██╗██╔════╝███║╚════██╗
+#                       ██████╔╝███████╗╚██║ █████╔╝
+#                       ██╔══██╗██╔═══██╗██║██╔═══╝ 
+#                       ██████╔╝╚██████╔╝██║███████╗
+#                       ╚═════╝  ╚═════╝ ╚═╝╚══════╝
+#                                                         By: LawlietJH
+#                                                              v.1.0.4
+from BannerEMCrk import Banner
 import time
 import os
+
+#=======================================================================
+
+Version = "v1.0.4"
+
+BannerB612 = Banner()
+
+Autor = """
+                            ╦  ┌─┐┬ ┬┬  ┬┌─┐┌┬┐╦╦ ╦
+                            ║  ├─┤││││  │├┤  │ ║╠═╣
+                            ╩═╝┴ ┴└┴┘┴─┘┴└─┘ ┴╚╝╩ ╩
+"""
+# Fuente: Calvin S - http://patorjk.com/software/taag/#p=display&f=Calvin%20S&t=LawlietJH
+
+
+
+def Dat():
+	
+	os.system("cls && Title B612.py                "+\
+			"By: LawlietJH                "+Version+"    ")
+	print("\n\n", BannerB612)
+	print("\n\n", Autor)
+	print("\n{:^80}".format(Version))
 
 
 
@@ -249,6 +277,7 @@ def GuardarArchivo():
 
 def Main():
 	
+	Dat()
 	LeerArchivo()
 	GuardarArchivo()
 
