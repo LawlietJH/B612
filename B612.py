@@ -8,14 +8,14 @@
 #                       ██████╔╝╚██████╔╝██║███████╗
 #                       ╚═════╝  ╚═════╝ ╚═╝╚══════╝
 #                                                         By: LawlietJH
-#                                                              v.1.0.7
+#                                                              v.1.0.8
 from BannerB612 import Banner
 import time
 import os
 
 #=======================================================================
 
-Version = "v1.0.7"
+Version = "v1.0.8"
 
 BannerB612 = Banner()
 
@@ -147,6 +147,11 @@ def B612(Cadena, Cifrar=True, Dats="12+"):
 					String += "\t"
 					continue
 					
+				elif y == "10":
+					
+					String += "\n"
+					continue
+					
 				elif y == "32":
 					
 					String += " "
@@ -201,6 +206,13 @@ def B612(Cadena, Cifrar=True, Dats="12+"):
 				if y == "9" and Cont == 1: #Atento!
 					
 					String += "\t"
+					Cont = 0
+					yy = ""
+					continue
+					
+				if y == "10" and Cont == 1: #Atento!
+					
+					String += "\n"
 					Cont = 0
 					yy = ""
 					continue
@@ -300,12 +312,27 @@ def Main():
 	Dats = "12+"
 	
 	Dat()
-	print("\n\n [+] Escribe el Nombre de Archivo.\n\n [!] Indíca el Número de 'Dats' a Utilizar. Por Defecto es 12+\n\n\t [~] Ejemplo: Archivo.txt 12+")
+	print("\n\n [*] Escribe el Nombre de Archivo."+
+		"\n\n [!] Indíca el Número de 'Dats' a Utilizar. Por Defecto es 12+"+
+		"\n\n\t [~] Ejemplo: Archivo.txt 12+"+
+		"\n\n [*] Dats Soportados:  11,  12  y del  14  al  32\n\n [¡] Del  22  al  32  es más Estable Por Ahora.")
 	Cadena = input("\n\n\n >>> ")
 	
 	if Cadena.endswith("+"):
 		
 		Dats = Cadena.split(" ")[-1]
+		
+		if Dats != "11+" and Dats != "12+" and Dats != "14+" and Dats != "15+"\
+		and Dats != "16+" and Dats != "17+" and Dats != "18+" and Dats != "19+"\
+		and Dats != "20+" and Dats != "21+" and Dats != "22+" and Dats != "23+"\
+		and Dats != "24+" and Dats != "25+" and Dats != "26+" and Dats != "27+"\
+		and Dats != "28+" and Dats != "29+"  and Dats != "30+" and Dats != "31+"\
+		and Dats != "32+":
+			
+			print("\n\n\t [!]", Dats, "No Soportado.")
+			Pause()
+			return
+		
 		Cadena = " ".join(Cadena.split(" ")[:-1])
 	
 	if os.path.exists(Cadena): # or Cadena.endswith((".txt", ".zion")):
