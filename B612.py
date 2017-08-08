@@ -7,14 +7,14 @@
 #                       ██████╔╝╚██████╔╝██║███████╗
 #                       ╚═════╝  ╚═════╝ ╚═╝╚══════╝
 #                                                         By: LawlietJH
-#                                                              v.1.0.5
+#                                                              v.1.0.6
 from BannerB612 import Banner
 import time
 import os
 
 #=======================================================================
 
-Version = "v1.0.5"
+Version = "v1.0.6"
 
 BannerB612 = Banner()
 
@@ -138,6 +138,12 @@ def B612(Cadena, Cifrar=True):
 			for y in Dec:
 				
 				if y == "": continue
+				
+				elif y == "9":
+					
+					String += "\t"
+					continue
+					
 				elif y == "32":
 					
 					String += " "
@@ -166,6 +172,7 @@ def B612(Cadena, Cifrar=True):
 					String += Asc
 				
 			String += "\n"
+			
 	else:
 		
 		Bool = False
@@ -188,14 +195,22 @@ def B612(Cadena, Cifrar=True):
 				Cont += 1
 				yy += y + " "
 				
-				if y == "32" and Cont == 1: #Atento!
-						
-						String += " "
-						Cont = 0
-						yy = ""
-						continue
+				if y == "9" and Cont == 1: #Atento!
+					
+					String += "\t"
+					Cont = 0
+					yy = ""
+					continue
+					
+				elif y == "32" and Cont == 1: #Atento!
+					
+					String += " "
+					Cont = 0
+					yy = ""
+					continue
 					
 				elif y == "":
+					
 					Cont = 0
 					yy = ""
 					continue
@@ -212,7 +227,7 @@ def B612(Cadena, Cifrar=True):
 					if C2 < 10:
 						C2 = "0" + str(C2)
 						
-					#~ if C1 == 95: C1 += 1
+					if C1 == 95: C1 += 1
 					if C2 == 95: C2 += 1
 						
 					yy = str(C1) + str(C2)
