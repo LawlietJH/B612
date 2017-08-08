@@ -1,5 +1,6 @@
 # -*- Coding: UTF-8 -*-
 # Python 3
+# Windows
 #                       ██████╗  ██████╗ ██╗██████╗ 
 #                       ██╔══██╗██╔════╝███║╚════██╗
 #                       ██████╔╝███████╗╚██║ █████╔╝
@@ -7,14 +8,14 @@
 #                       ██████╔╝╚██████╔╝██║███████╗
 #                       ╚═════╝  ╚═════╝ ╚═╝╚══════╝
 #                                                         By: LawlietJH
-#                                                              v.1.0.6
+#                                                              v.1.0.7
 from BannerB612 import Banner
 import time
 import os
 
 #=======================================================================
 
-Version = "v1.0.6"
+Version = "v1.0.7"
 
 BannerB612 = Banner()
 
@@ -110,12 +111,14 @@ def Dec_Asc(Dec):	#~ Decimal a Ascii.
 
 String = ""
 Bool = True
+xD = False
 
 
-
-def B612(Cadena, Cifrar=True):
+def B612(Cadena, Cifrar=True, Dats="12+"):
 	
 	global String, Bool
+	
+	Dats = int(Dats[:-1])
 	
 	String = ""
 	C1 = 0
@@ -153,7 +156,7 @@ def B612(Cadena, Cifrar=True):
 				
 				if len(y) == 4:
 					
-					C1, C2 = int(y[:2])+32, int(y[-2:])+32
+					C1, C2 = int(y[:2])+Dats, int(y[-2:])+Dats
 					
 					if C1 == 128: C1 -= 1
 					if C2 == 128: C2 -= 1
@@ -163,7 +166,7 @@ def B612(Cadena, Cifrar=True):
 					
 				if len(y) == 5:
 					
-					C1, C2 = int(y[:3])+32, int(y[-2:])+32
+					C1, C2 = int(y[:3])+Dats, int(y[-2:])+Dats
 					
 					if C1 == 128: C1 -= 1
 					if C2 == 128: C2 -= 1
@@ -171,7 +174,7 @@ def B612(Cadena, Cifrar=True):
 					Asc = Dec_Asc(str(C1)+" "+str(C2))
 					String += Asc
 				
-			String += "\n"
+			if xD != True: String += "\n"
 			
 	else:
 		
@@ -219,7 +222,7 @@ def B612(Cadena, Cifrar=True):
 					
 					yy = yy.split(" ")
 					
-					C1, C2 = int(yy[0])-32, int(yy[1])-32
+					C1, C2 = int(yy[0])-Dats, int(yy[1])-Dats
 					
 					if C1 < 10:
 						C1 = "0" + str(C1)
@@ -240,11 +243,11 @@ def B612(Cadena, Cifrar=True):
 					Cont = 0
 					yy = ""
 					
-			String += "\n"
+			if xD != True: String += "\n"
 
 
 
-def LeerArchivo(Nombre):
+def LeerArchivo(Nombre, Dats="12+"):
 	
 	global String
 	
@@ -261,8 +264,8 @@ def LeerArchivo(Nombre):
 	
 	Cadena = Cadena.split("\n")
 	
-	if Cadena[-1] == r"]|k\r(t8rp`pk\ÎX0": B612(Cadena, False)
-	else: B612(Cadena, True)
+	if Cadena[-1] == r"]|k\r(t8rp`pk\ÎX0": B612(Cadena, False, Dats)
+	else: B612(Cadena, True, Dats)
 	
 	Eny.close()
 	
@@ -292,29 +295,34 @@ def GuardarArchivo():
 
 def Main():
 	
-	global String
+	global String, xD
+	
+	Dats = "12+"
 	
 	Dat()
+	print("\n\n [+] Escribe el Nombre de Archivo.\n\n [!] Indíca el Número de 'Dats' a Utilizar. Por Defecto es 12+\n\n\t [~] Ejemplo: Archivo.txt 12+")
+	Cadena = input("\n\n\n >>> ")
 	
-	Cadena = input("\n\n [+] Escribe un Nombre de Archivo o Una Cadena Para Cifrar o Decifrar.\n\n\n >>> ")
-	
-	if "." in Cadena:
+	if Cadena.endswith("+"):
 		
-		if Cadena.endswith((".txt", ".zion")):
-
-			print(True)
-			LeerArchivo(Cadena)
+		Dats = Cadena.split(" ")[-1]
+		Cadena = " ".join(Cadena.split(" ")[:-1])
+	
+	if os.path.exists(Cadena): # or Cadena.endswith((".txt", ".zion")):
+		
+		LeerArchivo(Cadena, Dats)
 	
 	else:
+			
+		xD = True
 		
-		#~ print("\n\n\t [+] En Archivo:\n\n" + Cadena)
-	
-		#~ Cadena = Cadena.split("\n")
-		
-		if Cadena.endswith("0x"): B612(Cadena, False)
-		else: B612(Cadena, True)
+		#~ if Cadena.endswith("0x"): B612(Cadena, False)
+		#~ else: B612(Cadena, True)
+		B612(Cadena, True, Dats)
 		
 		print("\n\n [+] Cadena\n  |\n   ---------> " + String.replace("\n", "" ))
+		
+		xD = False
 		
 		Pause()
 		
