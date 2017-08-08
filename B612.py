@@ -13,6 +13,8 @@ from BannerB612 import Banner
 import time
 import os
 
+os.system("Color 0A")
+
 #=======================================================================
 
 Version = "v1.0.8"
